@@ -36,9 +36,9 @@ then
 
     aws ecr get-login-password --region ${AWS_REGION} | docker login \
         --username AWS \
-        --password-stdin ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com;
+        --password-stdin public.ecr.aws/a0q3n6r5/ecopytorch;
     docker tag ${IMAGE_NAME} \
-        ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${RV_ECR_IMAGE}
+        public.ecr.aws/a0q3n6r5/ecopytorch
     docker push \
-        ${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${RV_ECR_IMAGE}
+        public.ecr.aws/a0q3n6r5/ecopytorch
 fi
