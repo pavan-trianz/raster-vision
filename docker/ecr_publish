@@ -34,11 +34,7 @@ then
     ACCOUNT_ID=$(aws sts get-caller-identity --output text --query 'Account')
     AWS_REGION="us-east-1"
 
-    aws ecr get-login-password --region ${AWS_REGION} | docker login \
-        --username AWS \
-        --password-stdin public.ecr.aws/a0q3n6r5/ecopytorch;
-    docker tag ${IMAGE_NAME} \
-        public.ecr.aws/a0q3n6r5/ecopytorch
-    docker push \
-        public.ecr.aws/a0q3n6r5/ecopytorch
+    aws ecr-public get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin public.ecr.aws/a0q3n6r5/ecopytorch;
+    docker tag ${IMAGE_NAME} public.ecr.aws/a0q3n6r5/ecopytorch
+    docker push public.ecr.aws/a0q3n6r5/ecopytorch
 fi
